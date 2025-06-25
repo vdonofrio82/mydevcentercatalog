@@ -14,9 +14,11 @@ tasks:
     description: Install Docker Desktop
     parameters:
       command: |
-        wsl --install
+        # Enable WSL 2 and install Docker Desktop
+        dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all
         Invoke-WebRequest -Uri 'https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe' -OutFile 'DockerDesktopInstaller.exe'
-        Start-Process -Wait -FilePath '.\DockerDesktopInstaller.exe'
+        Start-Process -Wait -FilePath '.\DockerDesktopInstaller.exe' -ArgumentList 'install', '--quiet'
         Remove-Item '.\DockerDesktopInstaller.exe'
 
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
