@@ -13,11 +13,10 @@ description: "This definition is for testing the team configuration in MS DevBox
 tasks:
 # The following tasks are used for installing applications from the Windows Package Manager.
   - name: winget
-    description: Install Docker Desktop
+    description: Install Docker Desktop using WinGet config file
     parameters:
-      package: Docker.DockerDesktop
-      install-arguments: --silent --accept-package-agreements --accept-source-agreements
-      
+      configurationFile: winget-docker-config.yaml
+
   - name: winget
     description: Install VSCode
     parameters:
