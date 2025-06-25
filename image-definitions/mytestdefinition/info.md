@@ -2,7 +2,7 @@ Pre-requisite for this example:
 - MS DevBox implemented and Project catalogs configured
 - Azure CLI installed and devcenter extension installed
 
-To install the extension, run the following commands:
+To install the devcenter extension, run the following command:
 
 ```bash
 az extension add --name devcenter

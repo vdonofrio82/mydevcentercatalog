@@ -1,36 +1,14 @@
 # This file is used to define a MS DevBox image definition for testing purposes.
-# The image definition includes various tools commonly used in dev environments.
-# Tools: VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, and Docker Desktop.
-
 $schema: "1.0"
 # The name is used to identify the image definition.
-name: "mytest-dev"
+name: "myusertask-dev"
 # The image is the technical base image name used for the DevBox. On top of this image, additional tools will be installed.
 image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
 # The description provides a brief overview of the image definition.
 description: "This definition is for testing the team configuration in MS DevBox"
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
-# The following tasks are used for installing applications from the Windows Package Manager.
-  - name: winget
-    description: Install VSCode
-    parameters:
-      package:  Microsoft.VisualStudioCode
-  
-  - name: winget
-    description: Install Azure Storage Explorer
-    parameters:
-      package:  Microsoft.Azure.StorageExplorer
-  
-  - name: winget
-    description: Install SQL Server Management Studio
-    parameters:
-      package:  Microsoft.SQLServerManagementStudio
-  
-  - name: winget
-    description: Install OpenVPN
-    parameters:
-      package:  OpenVPNTechnologies.OpenVPN
+
 # The following  task is used for installing applications via PowerShell script.
   - name: powershell
     description: Install Docker Desktop
