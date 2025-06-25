@@ -12,10 +12,11 @@ description: "This definition is for testing the team configuration in MS DevBox
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
 # The following tasks are used for installing applications from the Windows Package Manager.
-  - name: winget
-    description: Install Docker Desktop using WinGet config file
+  - name: powershell
+    description: Install Docker Desktop
     parameters:
-      configurationFile: winget-docker-config.yaml
+      command: |
+        winget install --id Docker.DockerDesktop --silent --accept-package-agreements --accept-source-agreements
 
   - name: winget
     description: Install VSCode
