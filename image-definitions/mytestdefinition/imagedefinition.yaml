@@ -5,14 +5,9 @@ description: "This definition is for testing the team configuration in MS DevBox
 
 tasks:
   - name: winget
-    description: Install Postman
+    description: Install VSCode
     parameters:
-      package:  Postman.Postman
-
-  - name: winget
-    description: Install Docker Desktop
-    parameters:
-      package:  Docker.DockerDesktop
+      package:  Microsoft.VisualStudioCode
   
   - name: winget
     description: Install Azure Storage Explorer
@@ -28,4 +23,15 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
+
+  - name: powershell
+    description: Install Postman in DevBox
+    parameters:
+      command: "Invoke-WebRequest -Uri 'https://dl.pstmn.io/download/latest/win64' -OutFile 'PostmanSetup.exe'; Start-Process -FilePath 'PostmanSetup.exe' -ArgumentList '/silent' -Wait; Remove-Item -Path 'PostmanSetup.exe'"
+
+  - name: powershell
+    description: Install Docker Desktop in DevBox
+    parameters:
+      command: "Invoke-WebRequest -Uri 'https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe' -OutFile 'DockerDesktopInstaller.exe'; Start-Process -FilePath 'DockerDesktopInstaller.exe' -ArgumentList '/quiet' -Wait; Remove-Item -Path 'DockerDesktopInstaller.exe'"
+
   
