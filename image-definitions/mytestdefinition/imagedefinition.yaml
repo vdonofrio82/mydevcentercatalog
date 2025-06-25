@@ -1,0 +1,31 @@
+$schema: "1.0"
+name: "mytest-dev"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+description: "This definition is for testing the team configuration in MS DevBox"
+
+tasks:
+  - name: winget
+    description: Install Postman
+    parameters:
+      package:  Postman.Postman
+
+  - name: winget
+    description: Install Docker Desktop
+    parameters:
+      package:  Docker.DockerDesktop
+  
+  - name: winget
+    description: Install Azure Storage Explorer
+    parameters:
+      package:  Microsoft.Azure.StorageExplorer
+  
+  - name: winget
+    description: Install SQL Server Management Studio
+    parameters:
+      package:  Microsoft.SQLServerManagementStudio
+  
+  - name: winget
+    description: Install OpenVPN
+    parameters:
+      package:  OpenVPNTechnologies.OpenVPN
+  
