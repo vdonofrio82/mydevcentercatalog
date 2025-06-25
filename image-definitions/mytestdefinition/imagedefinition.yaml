@@ -13,6 +13,12 @@ description: "This definition is for testing the team configuration in MS DevBox
 tasks:
 # The following tasks are used for installing applications from the Windows Package Manager.
   - name: winget
+    description: Install Docker Desktop
+    parameters:
+      package: Docker.DockerDesktop
+      install-arguments: --silent --accept-package-agreements --accept-source-agreements
+      
+  - name: winget
     description: Install VSCode
     parameters:
       package:  Microsoft.VisualStudioCode
@@ -31,13 +37,5 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
-# The following  task is used for installing applications via PowerShell script.
-  - name: powershell
-    description: Install Docker Desktop
-    parameters:
-      command: |
-        Invoke-WebRequest -Uri 'https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe' -OutFile 'DockerDesktopInstaller.exe'
-        Start-Process -Wait -FilePath '.\DockerDesktopInstaller.exe' -ArgumentList 'install', '--quiet'
-        Remove-Item '.\DockerDesktopInstaller.exe'
 
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
