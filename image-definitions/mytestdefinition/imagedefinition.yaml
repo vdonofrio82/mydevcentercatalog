@@ -1,9 +1,17 @@
-$schema: "1.0"
-name: "mytest-dev"
-image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
-description: "This definition is for testing the team configuration in MS DevBox"
+# This file is used to define a MS DevBox image definition for testing purposes.
+# The image definition includes various tools commonly used in dev environments.
+# Tools: VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, Insomnia, and Docker Desktop.
 
+$schema: "1.0"
+# The name is used to identify the image definition.
+name: "mytest-dev"
+# The image is the technical base image name used for the DevBox. On top of this image, additional tools will be installed.
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+# The description provides a brief overview of the image definition.
+description: "This definition is for testing the team configuration in MS DevBox"
+# The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
+# The following tasks are used for installing applications from the Windows Package Manager.
   - name: winget
     description: Install VSCode
     parameters:
@@ -23,15 +31,15 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
-
+# The following  tasks are used for installing applications via PowerShell script.
   - name: powershell
-    description: Install Postman in DevBox
+    description: Install Insomnia
     parameters:
-      command: "Invoke-WebRequest -Uri 'https://dl.pstmn.io/download/latest/win64' -OutFile 'PostmanSetup.exe'; Start-Process -FilePath 'PostmanSetup.exe' -ArgumentList '/silent' -Wait; Remove-Item -Path 'PostmanSetup.exe'"
+      command: "Invoke-WebRequest -Uri 'https://updates.insomnia.rest/downloads/windows/latest' -OutFile 'InsomniaSetup.exe'; Start-Process -FilePath 'InsomniaSetup.exe' -ArgumentList '/S' -Wait; Remove-Item -Path 'InsomniaSetup.exe'"
 
   - name: powershell
-    description: Install Docker Desktop in DevBox
+    description: Install Docker Desktop
     parameters:
       command: "Invoke-WebRequest -Uri 'https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe' -OutFile 'DockerDesktopInstaller.exe'; Start-Process -FilePath 'DockerDesktopInstaller.exe' -ArgumentList '/quiet' -Wait; Remove-Item -Path 'DockerDesktopInstaller.exe'"
 
-  
+  # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
