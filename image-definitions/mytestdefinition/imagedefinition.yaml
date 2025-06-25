@@ -31,12 +31,7 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
-# The following  tasks are used for installing applications via PowerShell script.
-  - name: powershell
-    description: Install Insomnia
-    parameters:
-      command: "Invoke-WebRequest -Uri 'https://updates.insomnia.rest/downloads/windows/latest' -OutFile 'InsomniaSetup.exe'; Start-Process -FilePath 'InsomniaSetup.exe' -ArgumentList '/S' -Wait; Remove-Item -Path 'InsomniaSetup.exe'"
-
+# The following  task is used for installing applications via PowerShell script.
   - name: powershell
     description: Install Docker Desktop
     parameters:
