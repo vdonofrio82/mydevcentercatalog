@@ -12,11 +12,10 @@ description: "This definition is for testing the team configuration in MS DevBox
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
 # The following tasks are used for installing applications from the Windows Package Manager.
-  - name: powershell
-    description: Install Docker Desktop
+  - name: winget
+    description: Install Podman
     parameters:
-      command: |
-        winget install --id Docker.DockerDesktop --silent --accept-package-agreements --accept-source-agreements
+      package:  RedHat.Podman
 
   - name: winget
     description: Install VSCode
