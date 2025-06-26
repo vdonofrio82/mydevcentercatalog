@@ -10,3 +10,4 @@ properties:
         allowPrerelease: true
       settings:
         id: Docker.DockerDesktop
+        silent: true
