@@ -34,7 +34,7 @@ tasks:
   
   - name: winget
     parameters:
-      downloadUrl: 'https://raw.githubusercontent.com/vdonofrio82/mydevcentercatalog/main/image-definitions/myconfig/mytest-config.dsc.yaml'
+      downloadUrl: 'https://raw.githubusercontent.com/vdonofrio82/mydevcentercatalog/main/image-definitions/myconfig/mytestconfig.dsc.yaml'
   # The following task is an example of a PowerShell command for setting environment variables
   - name: powershell
     parameters:
