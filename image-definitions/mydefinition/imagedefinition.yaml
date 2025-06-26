@@ -32,6 +32,11 @@ tasks:
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
   
+  - name: winget
+    description: Install Podman
+    parameters:
+      package:  RedHat.Podman
+  
   # The following task is an example of a PowerShell command for setting environment variables
   - name: powershell
     parameters:
@@ -44,9 +49,5 @@ userTasks:
     description: Install Postman
     parameters:
       package:  Postman.Postman
- 
-  - name: winget
-    description: Install Podman
-    parameters:
-      package:  RedHat.Podman
+  
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
