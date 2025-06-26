@@ -31,7 +31,7 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
-  
+  # The following task is an example of using a custom configuration file for installing Docker Desktop
   - name: winget
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/vdonofrio82/mydevcentercatalog/main/image-definitions/myconfig/mytestconfig.dsc.yaml'
