@@ -10,7 +10,7 @@ image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m36
 description: "This definition is for testing the team configuration in MS DevBox"
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
-# The following tasks are used for installing applications from the Windows Package Manager.
+# The following tasks are used for installing applications from the Windows Package Manager without user context.
   
   - name: winget
     description: Install VSCode
@@ -31,14 +31,22 @@ tasks:
     description: Install OpenVPN
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
-  # The following task is an example of using a custom configuration file for installing Docker Desktop
-  - name: winget
-    parameters:
-      downloadUrl: 'https://raw.githubusercontent.com/vdonofrio82/mydevcentercatalog/main/image-definitions/myconfig/mytestconfig.dsc.yaml'
+  
   # The following task is an example of a PowerShell command for setting environment variables
   - name: powershell
     parameters:
       command: |
         $env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
 
+userTasks:
+# The following tasks are used for installing applications from the Windows Package Manager in user context.
+  - name: winget
+    description: Install Postman
+    parameters:
+      package:  Postman.Postman
+ 
+  - name: winget
+    description: Install Podman
+    parameters:
+      package:  RedHat.Podman
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
