@@ -35,17 +35,45 @@ tasks:
   - name: powershell
     parameters:
       command: |
+        # Ensure C:\Temp exists for downloads
+        $tempPath = "C:\Temp"
+        if (-not (Test-Path $tempPath)) {
+          New-Item -Path $tempPath -ItemType Directory | Out-Null
+        }
+
+        # Define the installer path
+        $dockerInstaller = Join-Path $tempPath "DockerDesktopInstaller.exe"
+
         # Download the latest Docker Desktop installer
-        $dockerInstaller = Join-Path $env:TEMP "DockerDesktopInstaller.exe"
-        Invoke-WebRequest -Uri "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe" -OutFile $dockerInstaller
+        try {
+          Invoke-WebRequest -Uri "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe" -OutFile $dockerInstaller -UseBasicParsing
+        } catch {
+          Write-Error "Failed to download Docker Desktop installer: $($_.Exception.Message)"
+          exit 1
+        }
+
+        # Verify the installer exists
+        if (-not (Test-Path $dockerInstaller)) {
+          Write-Error "Docker Desktop installer was not downloaded."
+          exit 1
+        }
 
         # Install Docker Desktop silently
-        Start-Process -FilePath $dockerInstaller -ArgumentList "install", "--quiet" -Wait
+        try {
+          Start-Process -FilePath $dockerInstaller -ArgumentList "install", "--quiet", "--accept-license" -Wait
+        } catch {
+          Write-Error "Failed to install Docker Desktop: $($_.Exception.Message)"
+          exit 1
+        }
 
-        # Remove installer
-        Remove-Item $dockerInstaller -Force
+        # Remove the installer
+        try {
+          Remove-Item $dockerInstaller -Force
+        } catch {
+          Write-Warning "Could not remove installer file: $($_.Exception.Message)"
+        }
 
-        Write-Host "Docker Desktop installation completed."
+        Write-Host "Docker Desktop installation completed successfully."
 
   - name: powershell
     parameters:
