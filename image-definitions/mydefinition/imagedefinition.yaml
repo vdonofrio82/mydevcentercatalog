@@ -32,19 +32,35 @@ tasks:
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
   
-  - name: winget
-    description: Install Podman
+  # The following tasks are an example of a PowerShell commands
+  - name: powershell
     parameters:
-      package:  RedHat.Podman
-  
-  # The following task is an example of a PowerShell command for setting environment variables
+      command: |
+        # Download the latest Docker Desktop installer
+        $dockerInstaller = Join-Path $env:TEMP "DockerDesktopInstaller.exe"
+        Invoke-WebRequest -Uri "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe" -OutFile $dockerInstaller
+
+        # Install Docker Desktop silently
+        Start-Process -FilePath $dockerInstaller -ArgumentList "install", "--quiet" -Wait
+
+        # Add 'Authenticated Users' to 'docker-users' group
+        if (-not (Get-LocalGroup -Name "docker-users" -ErrorAction SilentlyContinue)) {
+            net localgroup docker-users /add
+        }
+        net localgroup docker-users "NT AUTHORITY\Authenticated Users" /add
+
+        # Remove installer
+        Remove-Item $dockerInstaller -Force
+
+        Write-Host "Docker Desktop installation completed."
+
   - name: powershell
     parameters:
       command: |
         $env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
 
 userTasks:
-# The following tasks are used for installing applications from the Windows Package Manager in user context.
+# The following tasks are used for installing applications from the Windows Package Manager in user context that will require user to login to the DevBox before automatically completing installation.
   - name: winget
     description: Install Postman
     parameters:
