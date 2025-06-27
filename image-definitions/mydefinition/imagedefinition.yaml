@@ -1,17 +1,16 @@
-# This file is used to define a MS DevBox image definition configuration for testing purposes.
-# Tools: VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, and Docker Desktop.
+# This is a MS DevBox image definition configuration created for testing purposes.
+# Tools and apps : VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, Docker Desktop and Postman.
 
 $schema: "1.0"
-# The name is used to identify the image definition.
+# The name is used to identify the image definition and it is visible in the DevBox catalog.
 name: "mytest-dev"
 # The image is the technical base image name used for the DevBox. On top of this image, additional tools will be installed.
 image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
-# The description provides a brief overview of the image definition.
-description: "This definition is for testing the team configuration in MS DevBox"
+# The description provides a brief description of the image definition.
+description: "This definition is for testing the project team configuration in MS DevBox"
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
-# The following tasks are used for installing applications from the Windows Package Manager without user context.
-  
+# The following tasks are used for installing applications via WinGet built-in tasks.
   - name: winget
     description: Install VSCode
     parameters:
@@ -32,7 +31,7 @@ tasks:
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
   
-  # The following tasks are an example of a PowerShell commands
+  # The following tasks are used for installing applications via PowerShell built-in tasks.
   - name: powershell
     parameters:
       command: |
@@ -58,12 +57,12 @@ tasks:
     parameters:
       command: |
         $env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
-
+# The userTasks section contains a list of tasks to be automatically executed in user context after the user first sign-in to the DevBox.
 userTasks:
-# The following tasks are used for installing applications from the Windows Package Manager in user context that will require user to login to the DevBox before automatically completing installation.
+
   - name: winget
     description: Install Postman
     parameters:
       package:  Postman.Postman
   
-  # Many other tasks can be added here as needed, such as installing additional tools or configuring settings.
+  # Many other tasks can be added here as needed, such as installing additional tools or configuring settings. WinGet dsc configuration files are also supported.
