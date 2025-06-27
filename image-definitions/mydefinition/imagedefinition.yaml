@@ -31,49 +31,12 @@ tasks:
     parameters:
       package:  OpenVPNTechnologies.OpenVPN
   
-  # The following tasks are used for installing applications via PowerShell built-in tasks.
-  - name: powershell
+  - name: winget
+    description: Install Podman
     parameters:
-      command: |
-        # Ensure C:\Temp exists for downloads
-        $tempPath = "C:\Temp"
-        if (-not (Test-Path $tempPath)) {
-          New-Item -Path $tempPath -ItemType Directory | Out-Null
-        }
+      package:  RedHat.Podman
 
-        # Define the installer path
-        $dockerInstaller = Join-Path $tempPath "DockerDesktopInstaller.exe"
-
-        # Download the latest Docker Desktop installer
-        try {
-          Invoke-WebRequest -Uri "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe" -OutFile $dockerInstaller -UseBasicParsing
-        } catch {
-          Write-Error "Failed to download Docker Desktop installer: $($_.Exception.Message)"
-          exit 1
-        }
-
-        # Verify the installer exists
-        if (-not (Test-Path $dockerInstaller)) {
-          Write-Error "Docker Desktop installer was not downloaded."
-          exit 1
-        }
-
-        # Install Docker Desktop silently
-        try {
-          Start-Process -FilePath $dockerInstaller -ArgumentList "install", "--quiet", "--accept-license" -Wait
-        } catch {
-          Write-Error "Failed to install Docker Desktop: $($_.Exception.Message)"
-          exit 1
-        }
-
-        # Remove the installer
-        try {
-          Remove-Item $dockerInstaller -Force
-        } catch {
-          Write-Warning "Could not remove installer file: $($_.Exception.Message)"
-        }
-
-        Write-Host "Docker Desktop installation completed successfully."
+  # The following task is a sample powerShell built-in tasks.
 
   - name: powershell
     parameters:
