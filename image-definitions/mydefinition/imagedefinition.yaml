@@ -42,12 +42,6 @@ tasks:
         # Install Docker Desktop silently
         Start-Process -FilePath $dockerInstaller -ArgumentList "install", "--quiet" -Wait
 
-        # Add 'Authenticated Users' to 'docker-users' group
-        if (-not (Get-LocalGroup -Name "docker-users" -ErrorAction SilentlyContinue)) {
-            net localgroup docker-users /add
-        }
-        net localgroup docker-users "NT AUTHORITY\Authenticated Users" /add
-
         # Remove installer
         Remove-Item $dockerInstaller -Force
 
