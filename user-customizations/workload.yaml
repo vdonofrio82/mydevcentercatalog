@@ -1,7 +1,7 @@
 $schema: "1.0"
-name: "devbox-customization"
+name: "user-customization"
 userTasks:
-  - name: ~/winget
-    description: "Install Postman"
+  - name: winget
+    description: "Install IntelliJ IDEA Community EAP"
     parameters:
-      package: Postman.Postman
+      package: JetBrains.IntelliJIDEA.Community.EAP
