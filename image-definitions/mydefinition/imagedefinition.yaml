@@ -44,16 +44,14 @@ tasks:
         $env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
 # The userTasks section contains a list of tasks to be automatically executed in user context after the user first sign-in to the DevBox.
 userTasks:
-
-  - name: winget
-    description: Install Postman
-    parameters:
-      package:  Postman.Postman
    
   - name: __INTRINSIC_PowerShell__
     description: Install Docker Desktop using PowerShell
     parameters:
       command: "winget install --id Docker.DockerDesktop -e --source winget --silent --accept-package-agreements --accept-source-agreements"
-
   
+  - name: winget
+    description: Install Postman
+    parameters:
+      package:  Postman.Postman
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings. WinGet dsc configuration files are also supported.
