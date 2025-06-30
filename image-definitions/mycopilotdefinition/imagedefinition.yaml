@@ -2,7 +2,7 @@ $schema: "1.0"
 name: "copilot-dockerinstall"
 image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
 userTasks:
-  - name: __INTRINSIC_PowerShell__
+  - name: powershell
     description: Install Docker Desktop using PowerShell
     parameters:
       command: "winget install --id Docker.DockerDesktop -e --source winget --silent --accept-package-agreements --accept-source-agreements"
