@@ -49,5 +49,11 @@ userTasks:
     description: Install Postman
     parameters:
       package:  Postman.Postman
+   
+  - name: __INTRINSIC_PowerShell__
+    description: Install Docker Desktop using PowerShell
+    parameters:
+      command: "winget install --id Docker.DockerDesktop -e --source winget --silent --accept-package-agreements --accept-source-agreements"
+
   
   # Many other tasks can be added here as needed, such as installing additional tools or configuring settings. WinGet dsc configuration files are also supported.
