@@ -36,8 +36,7 @@ tasks:
     parameters:
       package:  RedHat.Podman
 
-  # The following task is a sample powerShell built-in tasks.
-
+  # The following task is a sample powerShell built-in task.
   - name: powershell
     parameters:
       command: |
