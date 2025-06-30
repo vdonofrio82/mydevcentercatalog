@@ -1,5 +1,5 @@
 # This is a MS DevBox image definition configuration created for testing purposes.
-# Tools and apps : VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, Podman and Postman.
+# Tools and apps : VSCode, Azure Storage Explorer, SQL Server Management Studio, OpenVPN, Podman, Docker Desktop and Postman.
 
 $schema: "1.0"
 # The name is used to identify the image definition and it is visible in the DevBox catalog.
@@ -44,7 +44,7 @@ tasks:
 # The userTasks section contains a list of tasks to be automatically executed in user context after the user first sign-in to the DevBox.
 userTasks:
    
-  - name: __INTRINSIC_PowerShell__
+  - name: powershell
     description: Install Docker Desktop using PowerShell
     parameters:
       command: "winget install --id Docker.DockerDesktop -e --source winget --silent --accept-package-agreements --accept-source-agreements"
