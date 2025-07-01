@@ -7,17 +7,11 @@ tasks:
     description: Install common tools
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/main/dsc-configurations/common-config.dsc.yaml'
-  ### Clone the eShop repository into the Workspaces directory
-  - name: git-clone
-    description: Clone this repository into z:\Workspaces
-    parameters:
-      repositoryUrl: https://github.com/contoso-co/eshop.git
-      directory: z:\workspaces
   ### Run the DSC configuration for the backend engineering environment
   - name: winget
     description: Install backend engineering tools
     parameters:
-      configurationFile: 'z:\workspaces\eshop\.configurations\backend-eng.dsc.yaml'
+      downloadUrl: 'https://raw.githubusercontent.com/contoso-co/eShop/refs/heads/main/.configurations/backend-eng.dsc.yaml'
 userTasks:
   - name: winget
     description: Install backend engineering tools post creation in user context
