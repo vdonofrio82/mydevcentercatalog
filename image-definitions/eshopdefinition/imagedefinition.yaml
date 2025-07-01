@@ -7,13 +7,3 @@ tasks:
     description: Install common tools
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/main/dsc-configurations/common-config.dsc.yaml'
-  ### Run the DSC configuration for the backend engineering environment
-  - name: winget
-    description: Install backend engineering tools
-    parameters:
-      downloadUrl: 'https://raw.githubusercontent.com/contoso-co/eShop/refs/heads/main/.configurations/backend-eng.dsc.yaml'
-userTasks:
-  - name: winget
-    description: Install backend engineering tools post creation in user context
-    parameters:
-      configurationFile: 'z:\workspaces\eshop\.configurations\backend-eng.postcreate.dsc.yaml'
