@@ -35,7 +35,17 @@ tasks:
     description: Install Podman
     parameters:
       package:  RedHat.Podman
-
+   # Run winget DSC configurations to create a new Dev Drive called z with git
+  - name: winget
+    description: Create a new Dev Drive
+    parameters:
+      downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/main/dsc-configurations/common-config.dsc.yaml'
+   # The following task clones the specified repository into the designated directory
+  - name: git-clone
+    description: Clone this repository into C:\Workspaces
+    parameters:
+      repositoryUrl: https://github.com/vdonofrio82/mydevcentercatalog.git
+      directory: C:\Users\Public
   # The following task is a sample powerShell built-in task.
   - name: powershell
     parameters:
