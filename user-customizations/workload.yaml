@@ -2,6 +2,6 @@ $schema: "1.0"
 name: "user-customization"
 userTasks:
   - name: winget
-    description: "Install IntelliJ IDEA Community EAP"
+    description: clone eshop repo
     parameters:
-      package: JetBrains.IntelliJIDEA.Community.EAP
+      downloadUrl: 'https://raw.githubusercontent.com/vdonofrio82/mydevcentercatalog/refs/heads/main/myconfigurations/config.dsc.yaml'
