@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  resources:
+    # Clone the eshop Git repository
+    - resource: PSDscResources/Script
+      directives:
+        description: Configure Git to use Default WAM account
+      settings:
+        SetScript: |
+          git clone --quiet https://github.com/contoso-co/eshop.git "Z:\eshop"
+          
+        GetScript: return $false
+        TestScript: return $false
