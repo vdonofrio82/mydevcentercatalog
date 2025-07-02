@@ -42,9 +42,9 @@ tasks:
       downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/main/dsc-configurations/common-config.dsc.yaml'
    # The following task clones the specified repository into the designated directory in the new Dev Drive
   - name: git-clone
-    description: Clone this repository into C:\Workspaces
+    description: Clone a repository into C:\Workspaces
     parameters:
-      repositoryUrl: https://github.com/vdonofrio82/mydevcentercatalog.git
+      repositoryUrl: https://github.com/contoso-co/eshop.git
       directory: Z:\Workspaces
   # The following task is a sample powerShell built-in task.
   - name: powershell

@@ -8,7 +8,7 @@ description: "This definition is for testing the project team configuration in M
 # The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
 tasks:
   - name: choco
-    description: install OracleJDK 17.0.2
+    description: install Docker Desktop
     parameters:
-      package: oraclejdk
-      version: 17.0.2
+      package: docker-desktop
+      version: 4.42.1
