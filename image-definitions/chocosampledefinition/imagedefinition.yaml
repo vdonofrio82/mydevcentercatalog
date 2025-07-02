@@ -1,0 +1,14 @@
+$schema: "1.0"
+# The name is used to identify the image definition and it is visible in the DevBox catalog.
+name: "samplechoco-dev"
+# The image is the technical base image name used for the DevBox. On top of this image, additional tools will be installed.
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+# The description provides a brief description of the image definition.
+description: "This definition is for testing the project team configuration in MS DevBox"
+# The tasks section contains a list of tasks to be executed in background during the DevBox provisioning.
+tasks:
+  - name: choco
+    description: install OracleJDK 17.0.2
+    parameters:
+      package: oraclejdk
+      version: 17.0.2
